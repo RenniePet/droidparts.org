@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Getting Started &mdash; DroidParts</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="DroidParts" href="index.html" />
+    <link rel="next" title="Dependency Injection" href="di.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" />
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-40636409-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="di.html" title="Dependency Injection"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="introduction.html" title="Introduction"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">DroidParts</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>My recommendation is to read this guide for an overview,
+then study the sample apps to see DroidParts in action.</p>
+<div class="section" id="repository-structure">
+<h2>Repository Structure<a class="headerlink" href="#repository-structure" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre>git clone https://github.com/yanchenko/droidparts.git</pre>
+</div>
+<p>and you&#8217;ll see:</p>
+<ol class="arabic">
+<li><p class="first"><em>droidparts</em> - the library.</p>
+</li>
+<li><dl class="first docutils">
+<dt><em>droidparts-samples</em> - sample apps:</dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">DroidPartsGram</span></tt> - a better Instagram alternative. (:</li>
+<li><tt class="docutils literal"><span class="pre">droidparts-sample</span></tt> - an older fragment-free app.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first"><em>droidparts-test</em> - unit tests.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="obtaining">
+<h2>Obtaining<a class="headerlink" href="#obtaining" title="Permalink to this headline">¶</a></h2>
+<p>You can download the latest
+<a class="reference external" href="http://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&amp;g=org.droidparts&amp;a=droidparts&amp;v=LATEST">droidparts-x.y.z.jar</a>
+and add it to the <tt class="docutils literal"><span class="pre">libs</span></tt> folder.</p>
+<p>Specify as a Maven dependency:</p>
+<div class="highlight-python"><pre>&lt;dependency&gt;
+  &lt;groupId&gt;org.droidparts&lt;/groupId&gt;
+  &lt;artifactId&gt;droidparts&lt;/artifactId&gt;
+  &lt;version&gt;${version.from.jar.above}&lt;/version&gt;
+&lt;/dependency&gt;</pre>
+</div>
+<p>Use the library project + ActionBarSherlock required to compile it.</p>
+</div>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>Even though DroidParts can be used as a set of libraries, it&#8217;s full pontential is revealed in framework mode.</p>
+<p>For that you&#8217;ll need to subclass:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">AbstractDBOpenHelper</span></tt> for ORM.</li>
+<li><tt class="docutils literal"><span class="pre">AbstractDependencyProvider</span></tt> and specify the subclass in <cite>AndroidManifest.xml</cite>: <a class="reference internal" href="di.html"><em>Dependency Injection</em></a>.</li>
+<li><tt class="docutils literal"><span class="pre">AbstractApplication</span></tt>(optional).</li>
+</ul>
+<p><a class="reference internal" href="log.html"><em>Logging</em></a> is also configurable via <cite>AndroidManifest.xml</cite>.</p>
+</div>
+<div class="section" id="proguard">
+<h2>ProGuard<a class="headerlink" href="#proguard" title="Permalink to this headline">¶</a></h2>
+<p>Remember to include <tt class="docutils literal"><span class="pre">proguard-droidparts.cfg</span></tt>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Getting Started</a><ul>
+<li><a class="reference internal" href="#repository-structure">Repository Structure</a></li>
+<li><a class="reference internal" href="#obtaining">Obtaining</a></li>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#proguard">ProGuard</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="introduction.html"
+                        title="previous chapter">Introduction</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="di.html"
+                        title="next chapter">Dependency Injection</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="di.html" title="Dependency Injection"
+             >next</a></li>
+        <li class="right" >
+          <a href="introduction.html" title="Introduction"
+             >previous</a> |</li>
+        <li><a href="index.html">DroidParts</a> &raquo;</li> 
+      </ul>
+    </div>
+<div style="text-align: center; margin-top:10px;">
+
+	<iframe src="http://ghbtns.com/github-btn.html?user=yanchenko&repo=droidparts&type=watch&count=true"
+	  allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe>
+
+	<iframe src="http://ghbtns.com/github-btn.html?user=yanchenko&repo=droidparts&type=fork&count=true"
+	  allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe>
+
+	<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://droidparts.org" data-text="DroidParts — a carefully crafted Android framework." data-via="droidparts"></a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+	
+	<div class="g-plusone" data-size="medium" data-href="http://droidparts.org"></div>
+	<script type="text/javascript">
+	  (function() {
+	    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+	    po.src = 'https://apis.google.com/js/plusone.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+	  })();
+	</script>
+	
+	<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fdroidparts.org&amp;width=100&amp;height=21&amp;colorscheme=light&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;send=false&amp;appId=617943188236846" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:90px; height:21px;" allowTransparency="true"></iframe>
+	
+    
+</div>
+
+    <div class="footer">
+        &copy; Copyright 2013, Alex Yanchenko.
+    </div>
+
+  </body>
+</html>

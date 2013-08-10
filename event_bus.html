@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Event Bus &mdash; DroidParts</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="DroidParts" href="index.html" />
+    <link rel="next" title="Adapters" href="adapters.html" />
+    <link rel="prev" title="Object-Relational Mapping" href="orm.html" />
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-40636409-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="adapters.html" title="Adapters"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="orm.html" title="Object-Relational Mapping"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">DroidParts</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="event-bus">
+<h1>Event Bus<a class="headerlink" href="#event-bus" title="Permalink to this headline">¶</a></h1>
+<p>EventBus comes handy when you have a set of listeners that care about some events that happen in the background.
+Like an incoming message in a messenger app.</p>
+<div class="section" id="events">
+<h2>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h2>
+<p>An event can either consist of a single String or String + data Object.
+Events are posted using <tt class="docutils literal"><span class="pre">EventBus.postEvent(...)</span></tt> or <tt class="docutils literal"><span class="pre">EventBus.postEventSticky(...)</span></tt>.
+Posting an event sticky means that it&#8217;s most recent version will be delivered to newly registered receivers.</p>
+<p>Events are guaranteed to be delivered on the main thread.</p>
+</div>
+<div class="section" id="event-receivers">
+<h2>Event Receivers<a class="headerlink" href="#event-receivers" title="Permalink to this headline">¶</a></h2>
+<p>In an Activity that extends base DroidParts Activities, the simplest way to register for Events is to use annotated methods:</p>
+<div class="highlight-python"><pre>@ReceiveEvents(name = { "MESSAGE_SENT", "MESSAGE_RECEIVED" })
+private void onMessageEvent(String eventName) {
+   // TODO process 2 kinds of events without data
+}
+
+@ReceiveEvents
+private void onAnyEvent(String eventName, Object eventData) {
+   // TODO process any event with optional data
+}</pre>
+</div>
+<p>You can also register arbitrary <tt class="docutils literal"><span class="pre">EventReceiver</span></tt>s with <tt class="docutils literal"><span class="pre">EventBus.registerReceiver(...)</span></tt>.
+And don&#8217;t forget to call <tt class="docutils literal"><span class="pre">EventBus.unregisterReceiver(...)</span></tt>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Event Bus</a><ul>
+<li><a class="reference internal" href="#events">Events</a></li>
+<li><a class="reference internal" href="#event-receivers">Event Receivers</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="orm.html"
+                        title="previous chapter">Object-Relational Mapping</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="adapters.html"
+                        title="next chapter">Adapters</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="adapters.html" title="Adapters"
+             >next</a></li>
+        <li class="right" >
+          <a href="orm.html" title="Object-Relational Mapping"
+             >previous</a> |</li>
+        <li><a href="index.html">DroidParts</a> &raquo;</li> 
+      </ul>
+    </div>
+<div style="text-align: center; margin-top:10px;">
+
+	<iframe src="http://ghbtns.com/github-btn.html?user=yanchenko&repo=droidparts&type=watch&count=true"
+	  allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe>
+
+	<iframe src="http://ghbtns.com/github-btn.html?user=yanchenko&repo=droidparts&type=fork&count=true"
+	  allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe>
+
+	<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://droidparts.org" data-text="DroidParts — a carefully crafted Android framework." data-via="droidparts"></a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+	
+	<div class="g-plusone" data-size="medium" data-href="http://droidparts.org"></div>
+	<script type="text/javascript">
+	  (function() {
+	    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+	    po.src = 'https://apis.google.com/js/plusone.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+	  })();
+	</script>
+	
+	<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fdroidparts.org&amp;width=100&amp;height=21&amp;colorscheme=light&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;send=false&amp;appId=617943188236846" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:90px; height:21px;" allowTransparency="true"></iframe>
+	
+    
+</div>
+
+    <div class="footer">
+        &copy; Copyright 2013, Alex Yanchenko.
+    </div>
+
+  </body>
+</html>
